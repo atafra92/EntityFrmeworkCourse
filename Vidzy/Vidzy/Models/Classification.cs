@@ -1,6 +1,6 @@
 ﻿namespace Vidzy.Models
 {
-    public enum Classification
+    public enum Classification : byte
     {
         Silver, 
         Gold, 

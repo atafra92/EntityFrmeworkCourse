@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vidzy.DAL;
 
 namespace Vidzy.Migrations
 {
     [DbContext(typeof(VidzyDbContext))]
-    partial class VidzyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210209214110_AddFluentAPIToVideoAndGenresTables")]
+    partial class AddFluentAPIToVideoAndGenresTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,23 +36,6 @@ namespace Vidzy.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genres");
-                });
-
-            modelBuilder.Entity("Vidzy.Models.Tag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Vidzy.Models.Video", b =>
@@ -81,40 +66,12 @@ namespace Vidzy.Migrations
                     b.ToTable("Videos");
                 });
 
-            modelBuilder.Entity("Vidzy.Models.VideoTags", b =>
-                {
-                    b.Property<int>("TagId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VideoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("TagId", "VideoId");
-
-                    b.HasIndex("VideoId");
-
-                    b.ToTable("VideoTags");
-                });
-
             modelBuilder.Entity("Vidzy.Models.Video", b =>
                 {
                     b.HasOne("Vidzy.Models.Genre", "Genre")
                         .WithMany("Videos")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Vidzy.Models.VideoTags", b =>
-                {
-                    b.HasOne("Vidzy.Models.Tag", "Tag")
-                        .WithMany("VideoTags")
-                        .HasForeignKey("TagId")
-                        .IsRequired();
-
-                    b.HasOne("Vidzy.Models.Video", "Video")
-                        .WithMany("VideoTags")
-                        .HasForeignKey("VideoId")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

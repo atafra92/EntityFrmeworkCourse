@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Vidzy.EntityTypeConfigurations;
 using Vidzy.Models;
 
 namespace Vidzy.DAL
@@ -39,13 +40,15 @@ namespace Vidzy.DAL
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Video>()
-            .HasOne(p => p.Genre)
-            .WithMany(b => b.Videos);
+        {           
+            modelBuilder.ApplyConfiguration(new VideoConfiguration());
+            modelBuilder.ApplyConfiguration(new GenreConfiguration());
+            modelBuilder.ApplyConfiguration(new VideoTagsConfiguration());
+            modelBuilder.ApplyConfiguration(new TagConfiguration());
 
         }
         public DbSet<Video> Videos { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }

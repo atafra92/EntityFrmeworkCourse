@@ -18,5 +18,6 @@ namespace Vidzy.Models
         public Genre Genre { get; set; }
 
         public Classification Classification { get; set; }
+        public List<VideoTags> VideoTags { get; set; } = new List<VideoTags>();
     }
 }

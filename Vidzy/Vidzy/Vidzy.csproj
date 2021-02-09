@@ -8,6 +8,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20210209153724_UpdateRelationshipToOneToMany.cs" />
     <Compile Remove="Migrations\20210209153724_UpdateRelationshipToOneToMany.Designer.cs" />
+    <Compile Remove="Migrations\20210209213833_Proba.cs" />
+    <Compile Remove="Migrations\20210209213833_Proba.Designer.cs" />
+    <Compile Remove="Migrations\20210209224003_AddTags.cs" />
+    <Compile Remove="Migrations\20210209224003_AddTags.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
