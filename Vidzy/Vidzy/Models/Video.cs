@@ -15,6 +15,6 @@ namespace Vidzy.Models
 
         public DateTime ReleaseTime { get; set; }
 
-        public List<VideoGenre> VideoGenres { get; set; } = new List<VideoGenre>();
+        public Genre Genre { get; set; }
     }
 }

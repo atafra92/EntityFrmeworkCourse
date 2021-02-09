@@ -15,18 +15,12 @@ namespace Vidzy
             {
                 var videos = new List<Video>
                 {
-                    new Video { Name = "Star Wars", ReleaseTime = DateTime.Now, VideoGenres = new List<VideoGenre>
-                    {
-                        new VideoGenre { GenreId = 4}
-                    }
-                    },
-                    new Video { Name = "Troy", ReleaseTime = DateTime.Now, 
-                        VideoGenres = new List<VideoGenre>
-                    { 
-                        new VideoGenre { GenreId = 2}
-                    } 
-                    }
+                    new Video { Name = "Star Wars", ReleaseTime = DateTime.Now },
+                    new Video { Name = "Troy", ReleaseTime = DateTime.Now }
                 };
+
+
+
                 foreach (var video in videos)
                 {
                     context.Videos.Add(video);

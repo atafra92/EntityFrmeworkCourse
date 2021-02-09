@@ -40,20 +40,11 @@ namespace Vidzy.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<VideoGenre>()
-            .HasKey(t => new { t.GenreId, t.VideoId });
+            modelBuilder.Entity<Video>()
+            .HasOne(p => p.Genre)
+            .WithMany(b => b.Videos);
 
-            modelBuilder.Entity<VideoGenre>()
-                .HasOne(pt => pt.Video)
-                .WithMany(p => p.VideoGenres)
-                .HasForeignKey(pt => pt.VideoId);
-
-            modelBuilder.Entity<VideoGenre>()
-                .HasOne(pt => pt.Genre)
-                .WithMany(t => t.VideoGenres)
-                .HasForeignKey(pt => pt.GenreId);
         }
-
         public DbSet<Video> Videos { get; set; }
         public DbSet<Genre> Genres { get; set; }
     }

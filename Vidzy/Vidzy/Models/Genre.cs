@@ -13,6 +13,7 @@ namespace Vidzy.Models
         [StringLength(100)]
         public string Name { get; set; }
 
-        public List<VideoGenre> VideoGenres { get; set; } = new List<VideoGenre>();
+        public List<Video> Videos { get; set; } = new List<Video>();
+
     }
 }
