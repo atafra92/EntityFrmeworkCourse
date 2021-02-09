@@ -111,7 +111,6 @@ namespace FluentAPI.Migrations
                     b.HasOne("DataAnnotations.Author", "Author")
                         .WithMany("Courses")
                         .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
                 });
 

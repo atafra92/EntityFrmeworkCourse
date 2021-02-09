@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluentAPI.Migrations
 {
     [DbContext(typeof(PlutoContext))]
-    [Migration("20210209190436_InitialCreate")]
+    [Migration("20210209211157_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -113,7 +113,6 @@ namespace FluentAPI.Migrations
                     b.HasOne("DataAnnotations.Author", "Author")
                         .WithMany("Courses")
                         .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
                 });
 
